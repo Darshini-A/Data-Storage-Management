@@ -395,6 +395,7 @@ DTScore = accuracy_score(Y_Test, DT_Pred)
 DT_precision_score = precision_score(Y_Test,DT_Pred)
 DT_recall_score = recall_score(Y_Test,DT_Pred)
 DT_Score = f1_score(Y_Test,DT_Pred)
+
 print("Precision score =",DT_precision_score)
 print("Recall score =", DT_recall_score)
 print("F1 score =", DTScore)
@@ -527,7 +528,6 @@ X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1],1))
 predicted_closing_price = lstm_model.predict(X_test)
 predicted_closing_price = scaler.inverse_transform(predicted_closing_price)
 
-
 valid_df['Predictions'] = predicted_closing_price
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=train_df.index,y=train_df['Close'],
@@ -558,10 +558,6 @@ from tensorflow.keras.regularizers import L1L2
 from tensorflow.keras.optimizers import Adadelta
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-
-x_train.shape
-
-x_train[0]
 
 print(x_train.shape)
 print(x_test.shape)
@@ -596,6 +592,7 @@ model.compile(optimizer=Adadelta(learning_rate=0.05),
 model.fit(x=x_train_flat, y=y_train_ohe, epochs=30, validation_data=(x_test_flat, y_test_ohe), batch_size=32)
 
 history = model.history.history
+
 train_loss= history["loss"]
 val_loss= history["val_loss"]
 plt.plot(train_loss)
